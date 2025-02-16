@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Navigate } from "react-router-dom";
 import "./App.css";
 import AppRoutes from "./AppRoutes";
 import Navbar from "./views/shared/Navbar";
@@ -36,6 +36,11 @@ const App = () => {
   useEffect(() => {
     onRouteChanged();
   }, [pathname]);
+
+  // Redirect root path to /user
+  if (pathname === '/') {
+    return <Navigate to="/user" replace />;
+  }
 
   let navbarComponent = !isFullPageLayout ? <Navbar /> : "";
   let sidebarComponent = !isFullPageLayout ? <Sidebar /> : "";
