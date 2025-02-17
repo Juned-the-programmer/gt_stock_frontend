@@ -162,7 +162,17 @@ const Users = () => {
               <div className="card">
                 <div className="card-body">
                 <DataTable
-                  title={<h6 className="card-title">Users List</h6>}
+                  title={
+                  <div className="d-flex justify-content-between align-items-center">
+                    <h6 className="card-title">Users List</h6>
+                    <button
+                    className="btn btn-primary"
+                    onClick={() => navigate('/user/add')}
+                    >
+                    Add User
+                    </button>
+                  </div>
+                  }
                   columns={columns}
                   data={filteredData}
                   pagination

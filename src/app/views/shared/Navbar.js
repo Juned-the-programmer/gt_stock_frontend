@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Modal, ModalBody } from "react-bootstrap";
+import { toast } from "react-toastify";
 import FeatherIcon from "feather-icons-react";
 import { UserCircle, SignOut } from "@phosphor-icons/react";
 
@@ -12,6 +13,17 @@ const Navbar = () => {
     document.querySelector(".sidebar-offcanvas").classList.toggle("active");
   };
   const handleLogout = () => {
+    try {
+      // Clear all stored data
+      localStorage.clear();
+      // Show success message
+      toast.success("Logged out successfully");
+      // Redirect to login page
+      navigate("/login");
+      setModalShow(false);
+    } catch (error) {
+      toast.error("Error logging out");
+    }
   };
 
   // const toggleRightSidebar = () => {

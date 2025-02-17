@@ -7,6 +7,7 @@ const Error404 = lazy(() => import("./views/pages/error/Error404"));
 const Login = lazy(() => import("./views/pages/auth/Login"));
 const Users = lazy(() => import("./views/pages/user/Users"));
 const UserDetail = lazy(() => import("./views/pages/user/UserDetail"));
+const AddUser = lazy(() => import("./views/pages/user/AddUser"));
 
 const SecureRoute = ({ redirectPath = "/login", children }) => {
   if (!localStorage.getItem("token")) {
@@ -35,11 +36,19 @@ const AppRoutes = () => {
           }
         />
         <Route
+          path="/user/add"
+          element={
+          <SecureRoute>
+            <AddUser />
+          </SecureRoute>
+          }
+        />
+        <Route
           path="/user/:id"
           element={
-            <SecureRoute>
-              <UserDetail />
-            </SecureRoute>
+          <SecureRoute>
+            <UserDetail />
+          </SecureRoute>
           }
         />
         <Route path="*" element={
