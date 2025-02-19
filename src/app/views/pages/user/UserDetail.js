@@ -53,7 +53,7 @@ const UserDetail = () => {
   const fetchUserData = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:5000/api/auth/user/${id}/v1`);
+      const response = await axios.get(`http://147.93.20.105:5000/api/auth/user/${id}/v1`);
       if (response.data.success) {
         // Since the API returns an array with one item, we take the first item
         setUserData(response.data.data[0]);
@@ -95,7 +95,7 @@ const UserDetail = () => {
       };
 
       const response = await axios.put(
-        `http://localhost:5000/api/auth/user/${id}/v1`,
+        `http://147.93.20.105:5000/api/auth/user/${id}/v1`,
         requestData,
         {
           headers: {

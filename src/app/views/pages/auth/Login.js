@@ -67,7 +67,7 @@ const Login = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-      "http://localhost:5000/api/auth/app/login/v1",
+      "http://147.93.20.105:5000/api/auth/app/login/v1",
       adminData,
       {
         headers: {

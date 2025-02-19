@@ -15,7 +15,6 @@ const Users = () => {
 
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
   const [users, setUsers] = useState([]);
-  // Pagination state and constants
   const [currentPage, setCurrentPage] = useState(1);
   const paginationPerPage = 10;
 
@@ -26,7 +25,7 @@ const Users = () => {
   const fetchUsers = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get(`http://localhost:5000/api/auth/users/list/${localStorage.getItem('__id')}/v1`);
+      const response = await axios.get(`http://147.93.20.105:5000/api/auth/users/list/${localStorage.getItem('__id')}/v1`);
       if (response.data.success) {
         setUsers(response.data.data);
       } else {

@@ -8,6 +8,11 @@ const Login = lazy(() => import("./views/pages/auth/Login"));
 const Users = lazy(() => import("./views/pages/user/Users"));
 const UserDetail = lazy(() => import("./views/pages/user/UserDetail"));
 const AddUser = lazy(() => import("./views/pages/user/AddUser"));
+const Company = lazy(() => import("./views/pages/company/Listcompany"));
+const AddCompany = lazy(() => import("./views/pages/company/AddCompany"));
+const CompanyDetails = lazy(() => import("./views/pages/company/CompanyDetails"))
+const AddSoftware = lazy(() => import("./views/pages/softwares/AddSoftware"))
+const SoftwareDetails = lazy(() => import("./views/pages/softwares/SoftwareDetails"))
 
 const SecureRoute = ({ redirectPath = "/login", children }) => {
   if (!localStorage.getItem("token")) {
@@ -48,6 +53,46 @@ const AppRoutes = () => {
           element={
           <SecureRoute>
             <UserDetail />
+          </SecureRoute>
+          }
+        />
+        <Route
+          path="/company"
+          element={
+          <SecureRoute>
+            <Company />
+          </SecureRoute>
+          }
+        />
+        <Route
+          path="/company/add"
+          element={
+          <SecureRoute>
+            <AddCompany />
+          </SecureRoute>
+          }
+        />
+        <Route
+          path="/company/:id"
+          element={
+          <SecureRoute>
+            <CompanyDetails />
+          </SecureRoute>
+          }
+        />
+        <Route
+          path="/software/:id"
+          element={
+          <SecureRoute>
+            <SoftwareDetails />
+          </SecureRoute>
+          }
+        />
+        <Route
+          path="/software/add/:id"
+          element={
+          <SecureRoute>
+            <AddSoftware />
           </SecureRoute>
           }
         />

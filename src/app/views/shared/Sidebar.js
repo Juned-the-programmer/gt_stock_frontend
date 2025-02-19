@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import NavLink from "../components/NavLink";
-import {
-  Users
-} from "@phosphor-icons/react";
+import { Users, Briefcase } from "@phosphor-icons/react";
 
 const sidebarData = [
   {
-    commonUrl: "/user",
-    primary: {
-      iconClass: <Users size={18} />,
-      title: "User",
-      url: "/user",
-    },
+    iconClass: <Users size={18} />,
+    title: "User",
+    url: "/user",
+  },
+  {
+    iconClass: <Briefcase size={18} />,
+    title: "Company",
+    url: "/company",
   }
 ];
 
@@ -36,9 +36,7 @@ const Sidebar = () => {
     setMenuState({});
   };
 
-  const isPathActive = (path) => {
-    return location.pathname.startsWith(path);
-  };
+  const isPathActive = (path) => location.pathname.startsWith(path);
 
   useEffect(() => {
     onRouteChanged();
@@ -64,18 +62,15 @@ const Sidebar = () => {
   return (
     <nav className="sidebar sidebar-offcanvas" id="sidebar">
       <ul className="nav">
-        {sidebarData.map((data) => {
-          return (
-            <NavLink
-              isPathActive={isPathActive}
-              url={data.primary.url}
-              iconClass={data.primary.iconClass}
-              title={data.primary.title}
-              commonUrl={data.commonUrl}
-              child={data.secondary}
-            />
-          );
-        })}
+        {sidebarData.map((item, index) => (
+          <NavLink
+            key={index}
+            isPathActive={isPathActive}
+            url={item.url}
+            iconClass={item.iconClass}
+            title={item.title}
+          />
+        ))}
       </ul>
     </nav>
   );
